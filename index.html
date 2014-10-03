@@ -1,10 +1,10 @@
 <!doctype html><!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>
 <html class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>
-<html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]--><head><meta charset="utf-8"><title></title><meta name="description" content=""><meta name="viewport" content="width=device-width"><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel="stylesheet" href="styles/vendor.css"><link rel="stylesheet" href="styles/main.css"><body ng-app="nextBartApp"><!--[if lt IE 7]>
+<html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]--><head><meta charset="utf-8"><title></title><meta name="description" content=""><meta name="viewport" content="width=device-width, height=device-height"><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel="stylesheet" href="styles/vendor.css"><link rel="stylesheet" href="styles/main.css"><body ng-app="nextBartApp"><!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
-<![endif]--><div class="links"><ul><li data-ng-click="$state.go(&apos;home&apos;)"></li><li data-ng-click="$state.go(&apos;stations&apos;)"></li><li data-ng-click="$state.go(&apos;fare&apos;)"></li><li data-ng-click="$state.go(&apos;location&apos;)"></li></ul></div><!-- Add your site or application content here --><div class="container" data-ui-view="HomeView"></div><!-- Google Analytics: change UA-XXXXX-X to be your site's ID --><script>(function (i, s, o, g, r, a, m) {
+<![endif]--><!-- Add your site or application content here --><div class="container" data-ui-view="HomeView"></div><!-- Google Analytics: change UA-XXXXX-X to be your site's ID --><script>(function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
             (i[r].q = i[r].q || []).push(arguments)
@@ -21,19 +21,24 @@
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/json3/lib/json3.min.js"></script>
 <![endif]--><script src="cordova.js"></script><script src="scripts/libs/xml2json.js"></script><script src="scripts/vendor.js"></script><script src="scripts/scripts.js"></script><!-- Begin Templates --><script type="text/ng-template" id="/views/dashboard.html"><div class="dashboard">
-    <div style="padding: 20px;">
-        {{train.data.root}}
+    <div class="origin">
+        <div class="links">
+            <ul>
+                <li data-ng-click="$state.go('home')">Go Home</li>
+                <li data-ng-click="$state.go('stations')">Go to Stations</li>
+                <li data-ng-click="$state.go('fare')">Go to Fare</li>
+                <li data-ng-click="$state.go('location')">Go to Locations</li>
+            </ul>
+        </div>
     </div>
-    <ul>
-        <li data-ng-repeat="route in routes.data.root.routes.route">
-            {{route}}
-        </li>
-    </ul>
-    <div style="padding: 20px;">
-        {{routeInfo.data.root}}
+    <div class="destination">
+
     </div>
-    <div style="padding: 20px;">
-        {{schedules.data.root}}
+    <div class="time-lapse">
+
+    </div>
+    <div class="view-next-set">
+
     </div>
 </div></script><script type="text/ng-template" id="/views/fare-calculator.html"><div class="fare-calculator">
     {{fare}}
