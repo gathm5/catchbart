@@ -21,15 +21,15 @@
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/json3/lib/json3.min.js"></script>
 <![endif]--><script src="cordova.js"></script><script src="scripts/libs/xml2json.js"></script><script src="scripts/vendor.js"></script><script src="scripts/scripts.js"></script><!-- Begin Templates --><script type="text/ng-template" id="/views/dashboard.html"><div class="dashboard">
-    <div class="origin">
-        <span data-ng-if="!travel.origin" data-ng-click="$state.go('stations', {mode: 'origin'})">Select Origin</span>
+    <div class="origin" style="padding: 20px;" data-ng-click="$state.go('stations', {mode: 'origin'})">
+        <span data-ng-if="!travel.origin">Select Origin</span>
         {{travel.origin}}
     </div>
-    <div class="destination">
-        <span data-ng-if="!travel.destination" data-ng-click="$state.go('stations', {mode: 'destination'})">Select Destination</span>
+    <div class="destination" style="padding: 20px;" data-ng-click="$state.go('stations', {mode: 'destination'})">
+        <span data-ng-if="!travel.destination">Select Destination</span>
         {{travel.destination}}
     </div>
-    <button class="button" data-ng-if="travel.origin && travel.destination" data-ng-click="travel.search()">
+    <button class="button" style="padding: 20px;" data-ng-if="travel.origin && travel.destination" data-ng-click="travel.search()">
         Search for schedules
     </button>
     <div class="time-lapse">
