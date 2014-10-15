@@ -39,6 +39,7 @@
     <div class="view-next-set">
         <span>View next schedules</span>
     </div>
+    <clock data-ng-if="travel.results.schedule.request.trip"></clock>
     <ul>
         <li data-ng-repeat="trip in travel.results.schedule.request.trip">
             <div>
@@ -46,14 +47,11 @@
             </div>
         </li>
     </ul>
-</div></script><script type="text/ng-template" id="/views/directives/bingo-board.html"><div class="bingo-board">
-    <table>
-        <tr data-ng-repeat="block in board">
-            <td data-ng-repeat="item in block" data-ng-click="select(item)">
-                {{item.substr(1)}}
-            </td>
-        </tr>
-    </table>
+</div></script><script type="text/ng-template" id="/views/directives/clock.html"><div class="clock">
+    <span>{{time.hours}}</span>
+    <span class="colon animation-blink">:</span>
+    <span>{{time.minutes}}</span>
+    <span>{{time.mode}}</span>
 </div></script><script type="text/ng-template" id="/views/fare-calculator.html"><div class="fare-calculator">
     {{fare}}
 </div></script><script type="text/ng-template" id="/views/find-bart-station.html"><div class="find-bart-station">
