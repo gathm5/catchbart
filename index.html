@@ -23,13 +23,14 @@
 <![endif]--><script src="cordova.js"></script><script src="scripts/libs/xml2json.js"></script><script src="scripts/vendor.js"></script><script src="scripts/scripts.js"></script><!-- Begin Templates --><script type="text/ng-template" id="/views/dashboard.html"><div class="dashboard">
     <div class="origin" style="padding: 20px;" data-ng-click="$state.go('stations', {mode: 'origin'})">
         <span data-ng-if="!travel.origin">Select Origin</span>
-        {{travel.origin}}
+        {{travel.origin.name}}
     </div>
     <div class="destination" style="padding: 20px;" data-ng-click="$state.go('stations', {mode: 'destination'})">
         <span data-ng-if="!travel.destination">Select Destination</span>
-        {{travel.destination}}
+        {{travel.destination.name}}
     </div>
-    <button class="button" style="padding: 20px;" data-ng-if="travel.origin && travel.destination" data-ng-click="travel.search()">
+    <button class="button" style="padding: 20px;" data-ng-if="travel.origin && travel.destination"
+            data-ng-click="travel.search()">
         Search for schedules
     </button>
     <div class="time-lapse">
@@ -38,9 +39,21 @@
     <div class="view-next-set">
         <span>View next schedules</span>
     </div>
-    <div>
-        {{travel.results}}
-    </div>
+    <ul>
+        <li data-ng-repeat="trip in travel.results.schedule.request.trip">
+            <div>
+                {{trip.leg}}
+            </div>
+        </li>
+    </ul>
+</div></script><script type="text/ng-template" id="/views/directives/bingo-board.html"><div class="bingo-board">
+    <table>
+        <tr data-ng-repeat="block in board">
+            <td data-ng-repeat="item in block" data-ng-click="select(item)">
+                {{item.substr(1)}}
+            </td>
+        </tr>
+    </table>
 </div></script><script type="text/ng-template" id="/views/fare-calculator.html"><div class="fare-calculator">
     {{fare}}
 </div></script><script type="text/ng-template" id="/views/find-bart-station.html"><div class="find-bart-station">
@@ -49,7 +62,7 @@
             <li>{{station.name}} {{station.distance}}</li>
         </ul>
     </div>
-</div></script><script type="text/ng-template" id="/views/menu-panel.html"><p>This is the menu-panel view.</p></script><script type="text/ng-template" id="/views/next-schedule.html"><p>This is the next-schedule view.</p></script><script type="text/ng-template" id="/views/route-favorite.html"><p>This is the route-favorite view.</p></script><script type="text/ng-template" id="/views/route-schedule.html"><p>This is the route-schedule view.</p></script><script type="text/ng-template" id="/views/station-list.html"><div class="station-list">
+</div></script><script type="text/ng-template" id="/views/menu-panel.html"><p>This is the menu-panel view.</p></script><script type="text/ng-template" id="/views/next-schedule.html"><p>This is the next-schedule view.</p></script><script type="text/ng-template" id="/views/play-board.html"><bingo-board data-board="board"></bingo-board></script><script type="text/ng-template" id="/views/route-favorite.html"><p>This is the route-favorite view.</p></script><script type="text/ng-template" id="/views/route-schedule.html"><p>This is the route-schedule view.</p></script><script type="text/ng-template" id="/views/station-list.html"><div class="station-list">
     <ul>
         <li data-ng-repeat="station in stations.list" data-ng-click="stations.select(station)">
             <div>
