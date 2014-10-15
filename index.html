@@ -42,7 +42,7 @@
     <ul>
         <li data-ng-repeat="trip in travel.results.schedule.request.trip">
             <div>
-                {{trip.leg}}
+                {{trip.leg._origTimeMin}} and will reach at {{trip.leg._destTimeMin}}
             </div>
         </li>
     </ul>
