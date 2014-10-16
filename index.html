@@ -21,11 +21,12 @@
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/json3/lib/json3.min.js"></script>
 <![endif]--><script src="cordova.js"></script><script src="scripts/libs/xml2json.js"></script><script src="scripts/vendor.js"></script><script src="scripts/scripts.js"></script><!-- Begin Templates --><script type="text/ng-template" id="/views/dashboard.html"><div class="dashboard">
-    <clock></clock>
+    <div data-clock=""></div>
     <div class="origin" style="padding: 20px;" data-ng-click="$state.go('stations', {mode: 'origin'})">
         <span data-ng-if="!travel.origin">Select Origin</span>
         {{travel.origin.name}}
     </div>
+    <div class="swap" data-ng-click="travel.swap()">Swap</div>
     <div class="destination" style="padding: 20px;" data-ng-click="$state.go('stations', {mode: 'destination'})">
         <span data-ng-if="!travel.destination">Select Destination</span>
         {{travel.destination.name}}
@@ -40,11 +41,15 @@
     <div class="view-next-set">
         <span>View next schedules</span>
     </div>
-    <ul>
+    <ul data-ng-if="travel.results">
         <li data-ng-repeat="trip in travel.results.schedule.request.trip">
             <div data-ng-if="trip.leg.length">
                 <div class="leg" data-ng-repeat="leg in trip.leg">
-                    {{leg._origin}} to {{leg._destination}} at {{leg._origTimeMin}} and will reach at {{leg._destTimeMin}}
+                    {{leg._origin}} to {{leg._destination}} at {{leg._origTimeMin}} and will reach at
+                    {{leg._destTimeMin}}
+                </div>
+                <div data-ng-if="!$last">
+                    Connect Via
                 </div>
             </div>
             <div data-ng-if="!trip.leg.length">
