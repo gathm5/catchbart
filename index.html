@@ -1,7 +1,7 @@
 <!doctype html><!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>
 <html class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>
-<html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]--><head><meta charset="utf-8"><title></title><meta name="description" content=""><meta name="viewport" content="width=device-width, height=device-height"><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel="stylesheet" href="styles/vendor.css"><link rel="stylesheet" href="styles/main.css"><body ng-app="nextBartApp"><!--[if lt IE 7]>
+<html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]--><head><meta charset="utf-8"><title></title><meta name="description" content=""><meta name="viewport" content="width=device-width, height=device-height"><link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css"><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel="stylesheet" href="styles/vendor.css"><link rel="stylesheet" href="styles/main.css"><body ng-app="nextBartApp"><!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]--><div class="links"><ul><li data-ng-click="$state.go(&apos;fare&apos;)">Go to Fare</li><li data-ng-click="$state.go(&apos;location&apos;)">Go to Locations</li></ul></div><!-- Add your site or application content here --><div class="container" data-ui-view="HomeView"></div><!-- Google Analytics: change UA-XXXXX-X to be your site's ID --><script>(function (i, s, o, g, r, a, m) {
@@ -42,7 +42,12 @@
     <clock data-ng-if="travel.results.schedule.request.trip"></clock>
     <ul>
         <li data-ng-repeat="trip in travel.results.schedule.request.trip">
-            <div>
+            <div data-ng-if="trip.leg.length">
+                <div class="leg" data-ng-repeat="leg in trip.leg">
+                    {{leg._origin}} to {{leg._destination}} at {{leg._origTimeMin}} and will reach at {{leg._destTimeMin}}
+                </div>
+            </div>
+            <div data-ng-if="!trip.leg.length">
                 {{trip.leg._origTimeMin}} and will reach at {{trip.leg._destTimeMin}}
             </div>
         </li>
@@ -61,10 +66,11 @@
         </ul>
     </div>
 </div></script><script type="text/ng-template" id="/views/menu-panel.html"><p>This is the menu-panel view.</p></script><script type="text/ng-template" id="/views/next-schedule.html"><p>This is the next-schedule view.</p></script><script type="text/ng-template" id="/views/play-board.html"><bingo-board data-board="board"></bingo-board></script><script type="text/ng-template" id="/views/route-favorite.html"><p>This is the route-favorite view.</p></script><script type="text/ng-template" id="/views/route-schedule.html"><p>This is the route-schedule view.</p></script><script type="text/ng-template" id="/views/station-list.html"><div class="station-list">
+    <input type="text" data-ng-model="stationFilter"/>
     <ul>
-        <li data-ng-repeat="station in stations.list" data-ng-click="stations.select(station)">
+        <li data-ng-repeat="station in stations.list | filter:stationFilter" data-ng-click="stations.select(station)">
             <div>
-                {{station}}
+                {{station.name}}
             </div>
         </li>
     </ul>
