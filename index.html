@@ -21,6 +21,7 @@
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/json3/lib/json3.min.js"></script>
 <![endif]--><script src="cordova.js"></script><script src="scripts/libs/xml2json.js"></script><script src="scripts/vendor.js"></script><script src="scripts/scripts.js"></script><!-- Begin Templates --><script type="text/ng-template" id="/views/dashboard.html"><div class="dashboard">
+    <clock></clock>
     <div class="origin" style="padding: 20px;" data-ng-click="$state.go('stations', {mode: 'origin'})">
         <span data-ng-if="!travel.origin">Select Origin</span>
         {{travel.origin.name}}
@@ -39,7 +40,6 @@
     <div class="view-next-set">
         <span>View next schedules</span>
     </div>
-    <clock data-ng-if="travel.results.schedule.request.trip"></clock>
     <ul>
         <li data-ng-repeat="trip in travel.results.schedule.request.trip">
             <div data-ng-if="trip.leg.length">
