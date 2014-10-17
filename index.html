@@ -58,7 +58,32 @@
                 </div>
             </div>
             <div class="trip-divider" data-ng-if="!trip.leg.length">
-                <ba-depart-info data-trip="trip"></ba-depart-info>
+                <div class="ba-depart-info">
+                    <div class="inline">
+                        <span class="depart-title">
+                            Starts:
+                        </span>
+                        <span>
+                            {{trip.leg._origTimeMin}}
+                        </span>
+                                    </div>
+                                    <div class="inline">
+                        <span class="reach-title">
+                            Reaches:
+                        </span>
+                        <span>
+                            {{trip.leg._destTimeMin}}
+                        </span>
+                                    </div>
+                                    <div class="center">
+                        <span class="cost-title">
+                            Travel Cost:
+                        </span>
+                        <span>
+                            {{trip._fare | currency}}
+                        </span>
+                    </div>
+                </div>
             </div>
         </li>
     </ul>
