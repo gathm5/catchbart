@@ -26,7 +26,9 @@
         <span data-ng-if="!travel.origin">Select Origin</span>
         {{travel.origin.name}}
     </div>
-    <div class="swap" data-ng-click="travel.swap()">Swap</div>
+    <div class="swap" data-ng-click="travel.swap()">
+        <i class="fa fa-refresh deg-45"></i>
+    </div>
     <div class="destination" data-ng-click="$state.go('stations', {mode: 'destination'})">
         <span data-ng-if="!travel.destination">Select Destination</span>
         {{travel.destination.name}}
