@@ -43,17 +43,19 @@
     <ul data-ng-if="travel.results">
         <li data-ng-repeat="trip in travel.results.schedule.request.trip">
             <div class="trip-divider" data-ng-if="trip.leg.length">
-                <div class="connection-information">
-                    This travel has a connection
-                </div>
-                <div class="leg" data-ng-repeat="leg in trip.leg">
-                    {{leg._origin}} to {{leg._destination}} at {{leg._origTimeMin}} and will reach at
-                    {{leg._destTimeMin}}
-                    <div data-ng-if="!$last">
-                        Connect Via
+                <div class="ba-depart-info">
+                    <div class="connection-information">
+                        This travel has a connection
                     </div>
-                    <div data-ng-if="$last">
-                        {{trip._fare | currency}}
+                    <div class="leg" data-ng-repeat="leg in trip.leg">
+                        {{leg._origin}} to {{leg._destination}} at {{leg._origTimeMin}} and will reach at
+                        {{leg._destTimeMin}}
+                        <div class="center" data-ng-if="!$last">
+                            Connect Via
+                        </div>
+                        <div data-ng-if="$last">
+                            {{trip._fare | currency}}
+                        </div>
                     </div>
                 </div>
             </div>
