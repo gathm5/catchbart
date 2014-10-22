@@ -41,7 +41,8 @@
         <data-time-lapse data-ng-if="travel.timer" data-timer="{{travel.timer}}"></data-time-lapse>
     </div>
     <ul data-ng-if="travel.results">
-        <li data-ng-repeat="trip in travel.results.schedule.request.trip">
+        <li data-ng-repeat="trip in travel.results.schedule.request.trip"
+            data-ng-click="$state.go('details',{id: $index})">
             <div class="trip-divider" data-ng-if="trip.leg.length">
                 <div class="ba-depart-info">
                     <div class="connection-information center">
@@ -162,7 +163,9 @@
         <li data-ng-click="$state.go('dashboard')">Go to Dashboard</li>
         <li data-ng-click="$state.go('location')">Go to Locations</li>
     </ul>
-</div></script><script type="text/ng-template" id="/views/next-schedule.html"><p>This is the next-schedule view.</p></script><script type="text/ng-template" id="/views/play-board.html"><bingo-board data-board="board"></bingo-board></script><script type="text/ng-template" id="/views/route-favorite.html"><p>This is the route-favorite view.</p></script><script type="text/ng-template" id="/views/route-schedule.html"><p>This is the route-schedule view.</p></script><script type="text/ng-template" id="/views/station-list.html"><div class="station-list">
+</div></script><script type="text/ng-template" id="/views/next-schedule.html"><p>This is the next-schedule view.</p></script><script type="text/ng-template" id="/views/play-board.html"><bingo-board data-board="board"></bingo-board></script><script type="text/ng-template" id="/views/route-details.html"><div class="route-details">
+    {{route}}
+</div></script><script type="text/ng-template" id="/views/route-favorite.html"><p>This is the route-favorite view.</p></script><script type="text/ng-template" id="/views/route-schedule.html"><p>This is the route-schedule view.</p></script><script type="text/ng-template" id="/views/station-list.html"><div class="station-list">
     <input type="text" data-ng-model="stationFilter" autofocus="" placeholder="Search for a station"/>
     <ul>
         <li data-ng-repeat="station in stations.list | filter:stationFilter" data-ng-click="stations.select(station)">
