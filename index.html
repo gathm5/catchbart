@@ -37,7 +37,7 @@
             data-ng-click="travel.search()">
         Search for schedules
     </button>
-    <div class="time-lapse">
+    <div class="time-lapse-container">
         <data-time-lapse data-ng-if="travel.timer" data-timer="{{travel.timer}}"></data-time-lapse>
     </div>
     <ul data-ng-if="travel.results">
@@ -115,11 +115,20 @@
         </span>
     </div>
 </div></script><script type="text/ng-template" id="/views/directives/clock.html"><div class="clock">
-    <span>Time: </span>
+    <span>Now</span>
     <span>{{time.hours}}</span>
     <span class="colon animation-blink">:</span>
     <span>{{time.minutes}}</span>
     <span>{{time.mode}}</span>
+</div></script><script type="text/ng-template" id="/views/directives/time-lapse.html"><div class="time-lapse">
+    <div class="lapse" data-ng-if="!passed">
+        {{show.min}}
+        <span class="colon animation-blink">:</span>
+        {{show.sec}}
+    </div>
+    <div class="lapse message" data-ng-if="passed">
+        {{passed}}
+    </div>
 </div></script><script type="text/ng-template" id="/views/fare-calculator.html"><div class="fare-calculator">
     {{fare}}
 </div></script><script type="text/ng-template" id="/views/find-bart-station.html"><div class="find-bart-station">
