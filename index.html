@@ -20,18 +20,24 @@
     ga('send', 'pageview');</script><!--[if lt IE 9]>
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/json3/lib/json3.min.js"></script>
-<![endif]--><script src="cordova.js"></script><script src="scripts/libs/xml2json.js"></script><script src="scripts/vendor.js"></script><script src="scripts/scripts.js"></script><!-- Begin Templates --><script type="text/ng-template" id="/views/dashboard.html"><div class="dashboard">
+<![endif]--><script src="cordova.js"></script><script src="scripts/libs/xml2json.js"></script><script src="scripts/vendor.js"></script><!-- build:js(app) scripts/scripts.js --><script src="scripts/app.js"></script><script src="scripts/services/api-reference-service.js"></script><script src="scripts/controllers/dashboard.js"></script><script src="scripts/controllers/menu-panel.js"></script><script src="scripts/controllers/next-schedule.js"></script><script src="scripts/controllers/route-schedule.js"></script><script src="scripts/controllers/route-favorite.js"></script><script src="scripts/services/utilities-service.js"></script><script src="scripts/services/local-storage.js"></script><script src="scripts/services/train-information-service.js"></script><script src="scripts/services/train-routes-service.js"></script><script src="scripts/services/train-schedule-service.js"></script><script src="scripts/services/station-information-service.js"></script><script src="scripts/services/fare-service.js"></script><script src="scripts/controllers/station-list.js"></script><script src="scripts/services/favorite-route-service.js"></script><script src="scripts/services/active-route-service.js"></script><script src="scripts/controllers/fare-calculator.js"></script><script src="scripts/services/geo-location-service.js"></script><script src="scripts/controllers/find-bart-station.js"></script><script src="scripts/services/calculator-factory.js"></script><script src="scripts/directives/time-lapse.js"></script><script src="scripts/services/real-time-estimate-service.js"></script><script src="scripts/services/active-search-service.js"></script><script src="scripts/directives/clock.js"></script><script src="scripts/directives/ba-depart-info.js"></script><script src="scripts/filters/distance-filter.js"></script><script src="scripts/controllers/route-details.js"></script><script src="scripts/directives/back-button.js"></script><!-- endbuild --><!-- Begin Templates --><script type="text/ng-template" id="/views/dashboard.html"><div class="dashboard">
     <watch-clock></watch-clock>
     <div class="origin" data-ng-click="$state.go('stations', {mode: 'origin'})">
         <span data-ng-if="!travel.origin">Select Origin</span>
-        {{travel.origin.name}}
+        <span data-ng-if="travel.origin">
+            {{travel.origin.name}}
+            <i class="fa fa-pencil"></i>
+        </span>
     </div>
     <div class="swap" data-ng-click="travel.swap()">
         <i class="fa fa-refresh rotate-90 fa-2x"></i>
     </div>
     <div class="destination" data-ng-click="$state.go('stations', {mode: 'destination'})">
         <span data-ng-if="!travel.destination">Select Destination</span>
-        {{travel.destination.name}}
+        <span data-ng-if="travel.destination">
+            {{travel.destination.name}}
+            <i class="fa fa-pencil"></i>
+        </span>
     </div>
     <button class="search-button button" data-ng-if="travel.origin && travel.destination"
             data-ng-click="travel.search()">
@@ -130,6 +136,11 @@
             {{trip._fare | currency}}
         </span>
     </div>
+</div></script><script type="text/ng-template" id="/views/directives/back-button.html"><div class="back-button">
+    <div class="button" data-ng-click="back()">
+        <i class="fa fa-arrow-circle-left"></i>
+        Back
+    </div>
 </div></script><script type="text/ng-template" id="/views/directives/clock.html"><div class="clock">
     <span>
         <i class="fa fa-clock-o"></i>
@@ -163,8 +174,68 @@
         <li data-ng-click="$state.go('dashboard')">Go to Dashboard</li>
         <li data-ng-click="$state.go('location')">Go to Locations</li>
     </ul>
-</div></script><script type="text/ng-template" id="/views/next-schedule.html"><p>This is the next-schedule view.</p></script><script type="text/ng-template" id="/views/play-board.html"><bingo-board data-board="board"></bingo-board></script><script type="text/ng-template" id="/views/route-details.html"><div class="route-details">
-    {{route}}
+</div></script><script type="text/ng-template" id="/views/next-schedule.html"><p>This is the next-schedule view.</p></script><script type="text/ng-template" id="/views/play-board.html"><bingo-board data-board="board"></bingo-board></script><script type="text/ng-template" id="/views/route-details.html"><back-button data-go="$state.go('dashboard')"></back-button>
+<div class="route-details">
+    <div class="trip-divider" data-ng-if="trip.leg.length">
+        <div class="ba-depart-info">
+            <div class="connection-information center">
+                This travel has a connection
+            </div>
+            <div class="leg" data-ng-repeat="leg in trip.leg">
+                <div class="inline left text-left">
+                    {{leg._origin}}<span class="value">({{leg._origTimeMin}})</span>
+                </div>
+                <div class="inline center arrow">
+                    <i class="fa fa-long-arrow-right"></i>
+                </div>
+                <div class="inline right text-right">
+                    {{leg._destination}}<span class="value">({{leg._destTimeMin}})</span>
+                </div>
+                <div class="center" data-ng-if="!$last">
+                    Connect Via
+                </div>
+                <div class="center" data-ng-if="$last">
+                            <span class="cost-title label">
+                                Travel Cost:
+                            </span>
+                            <span class="value cost">
+                                {{trip._fare | currency}}
+                            </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="trip-divider" data-ng-if="!trip.leg.length">
+        <div class="ba-depart-info">
+            <div class="inline left text-left">
+                        <span class="depart-title label">
+                            Starts:
+                        </span>
+                        <span class="value">
+                            {{trip.leg._origTimeMin}}
+                        </span>
+            </div>
+            <div class="inline center arrow">
+                <i class="fa fa-long-arrow-right"></i>
+            </div>
+            <div class="inline right text-right">
+                        <span class="reach-title label">
+                            Reaches:
+                        </span>
+                        <span class="value">
+                            {{trip.leg._destTimeMin}}
+                        </span>
+            </div>
+            <div class="center">
+                        <span class="cost-title label">
+                            Travel Cost:
+                        </span>
+                        <span class="value cost">
+                            {{trip._fare | currency}}
+                        </span>
+            </div>
+        </div>
+    </div>
 </div></script><script type="text/ng-template" id="/views/route-favorite.html"><p>This is the route-favorite view.</p></script><script type="text/ng-template" id="/views/route-schedule.html"><p>This is the route-schedule view.</p></script><script type="text/ng-template" id="/views/station-list.html"><div class="station-list">
     <input type="text" data-ng-model="stationFilter" autofocus="" placeholder="Search for a station"/>
     <ul>
