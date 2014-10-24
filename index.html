@@ -171,8 +171,24 @@
     </div>
 </div></script><script type="text/ng-template" id="/views/menu-panel.html"><div class="menu-panel">
     <ul>
-        <li data-ng-click="$state.go('dashboard')">Go to Dashboard</li>
-        <li data-ng-click="$state.go('location')">Go to Locations</li>
+        <li data-ng-click="$state.go('dashboard')">
+            <span class="icon">
+                <i class="fa fa-bus"></i>
+            </span>
+
+            <div class="label">
+                Dashboard
+            </div>
+        </li>
+        <li data-ng-click="$state.go('location')">
+            <span class="icon">
+                <i class="fa fa-map-marker"></i>
+            </span>
+
+            <div class="label">
+                Nearest
+            </div>
+        </li>
     </ul>
 </div></script><script type="text/ng-template" id="/views/next-schedule.html"><p>This is the next-schedule view.</p></script><script type="text/ng-template" id="/views/play-board.html"><bingo-board data-board="board"></bingo-board></script><script type="text/ng-template" id="/views/route-details.html"><back-button data-go="$state.go('dashboard')"></back-button>
 <div class="route-details">
