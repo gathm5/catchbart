@@ -255,7 +255,7 @@
 </div></script><script type="text/ng-template" id="/views/route-favorite.html"><p>This is the route-favorite view.</p></script><script type="text/ng-template" id="/views/route-schedule.html"><p>This is the route-schedule view.</p></script><script type="text/ng-template" id="/views/station-list.html"><div class="station-list">
     <input type="text" data-ng-model="stationFilter" autofocus="" placeholder="Search for a station"/>
     <ul>
-        <li data-ng-repeat="station in stations.list | filter:stationFilter" data-ng-click="stations.select(station)">
+        <li class="animate-repeat" data-ng-repeat="station in stations.list | filter:stationFilter" data-ng-click="stations.select(station)">
             <div>
                 {{station.name}}
             </div>
