@@ -46,9 +46,9 @@
     <div class="time-lapse-container animate-rotate" data-ng-if="travel.timer">
         <data-time-lapse data-timer="{{travel.timer}}"></data-time-lapse>
     </div>
-    <ul data-ng-if="travel.results" class="animate-entrance">
+    <ul data-ng-if="travel.results">
         <li data-ng-repeat="trip in travel.results.schedule.request.trip"
-            data-ng-click="$state.go('details',{id: $index})">
+            data-ng-click="$state.go('details',{id: $index})" data-ng-class="{'animate-bounce-left': $even, 'animate-bounce-right': $odd}">
             <div class="trip-divider" data-ng-if="trip.leg.length">
                 <div class="ba-depart-info">
                     <div class="connection-information center">
