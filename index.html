@@ -39,6 +39,15 @@
             <i class="fa fa-pencil"></i>
         </span>
     </div>
+    <div class="advanced-search">
+        <div class="search-box center" data-ng-click="showAdvancedOptions()">
+            <i class="fa fa-cog"></i>
+            <span>Advanced search</span>
+        </div>
+        <div class="search-contents" data-ng-show="advanced">
+            <input type="datetime" placeholder="Select Date & Time" data-ng-model="advanced.datetime" class="date-time" />
+        </div>
+    </div>
     <button class="search-button button" data-ng-if="travel.origin && travel.destination"
             data-ng-click="travel.search()">
         Search for schedules
