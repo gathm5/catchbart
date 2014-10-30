@@ -1,1 +1,1 @@
-<div class="menu-panel"><ul><li data-ng-click="$state.go('dashboard')"><span class="icon"><i class="fa fa-bus"></i></span><div class="label">Dashboard</div></li><li data-ng-click="$state.go('location')"><span class="icon"><i class="fa fa-map-marker"></i></span><div class="label">Nearest</div></li></ul></div>
+<div class="menu-panel"><ul><li data-ng-repeat="menu in menus" data-ng-click="$state.go(menu.state)"><span class="icon"><i class="fa {{menu.icon}}"></i></span><div class="label">{{menu.title}}</div></li></ul></div>
