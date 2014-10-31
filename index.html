@@ -44,8 +44,8 @@
             <i class="fa fa-cog"></i>
             <span>Advanced search</span>
         </div>
-        <div class="search-contents" data-ng-show="advanced">
-            <input type="date" placeholder="Select Date" data-ng-model="advanced.datetime" class="date-time" />
+        <div class="search-contents" data-ng-show="advanced.show">
+            <input type="date" placeholder="Select Date" data-ng-model="advanced.date" class="date-time" />
         </div>
     </div>
     <button class="search-button button" data-ng-if="travel.origin && travel.destination"
@@ -210,7 +210,12 @@
             {{reason}}
         </div>
     </div>
-    <div class="spinner" data-ng-if="loading"></div>
+    <div data-ng-if="loading" class="center location-intermittent">
+        <span>
+            Locating bart stations...
+        </span>
+        <div class="spinner"></div>
+    </div>
 </div></script><script type="text/ng-template" id="/views/menu-panel.html"><div class="menu-panel">
     <ul>
         <li data-ng-repeat="menu in menus" data-ng-click="$state.go(menu.state)">
@@ -223,7 +228,7 @@
             </div>
         </li>
     </ul>
-</div></script><script type="text/ng-template" id="/views/next-schedule.html"><p>This is the next-schedule view.</p></script><script type="text/ng-template" id="/views/play-board.html"><bingo-board data-board="board"></bingo-board></script><script type="text/ng-template" id="/views/route-details.html"><back-button data-go="$state.go('dashboard')"></back-button>
+</div></script><script type="text/ng-template" id="/views/next-schedule.html"><p>This is the next-schedule view.</p></script><script type="text/ng-template" id="/views/route-details.html"><back-button data-go="$state.go('dashboard')"></back-button>
 <div class="route-details">
     <div class="trip-divider" data-ng-if="trip.leg.length">
         <div class="ba-depart-info">
@@ -321,9 +326,17 @@
 </div></script><script type="text/ng-template" id="/views/route-schedule.html"><p>This is the route-schedule view.</p></script><script type="text/ng-template" id="/views/schedules.html"><div class="schedules">
     <p>This is the schedules view.</p>
 </div></script><script type="text/ng-template" id="/views/station-list.html"><div class="station-list">
-    <input type="text" data-ng-model="stationFilter" autofocus="" placeholder="Search for a station"/>
+    <label for="searchStation">
+        <div class="input-station">
+            <input type="text" id="searchStation" data-ng-model="stationFilter" placeholder="Search for a station"/>
+            <span class="side-icon" data-ng-click="locateStation()">
+                <i class="fa fa-location-arrow"></i>
+            </span>
+        </div>
+    </label>
     <ul>
-        <li class="animate-repeat" data-ng-repeat="station in stations.list | filter:stationFilter" data-ng-click="stations.select(station)">
+        <li class="animate-repeat" data-ng-repeat="station in stations.list | filter:stationFilter"
+            data-ng-click="stations.select(station)">
             <div>
                 {{station.name}}
             </div>
