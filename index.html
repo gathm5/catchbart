@@ -45,7 +45,7 @@
             <span>Advanced search</span>
         </div>
         <div class="search-contents" data-ng-show="advanced">
-            <input type="datetime-local" placeholder="Select Date & Time" data-ng-model="advanced.datetime" class="date-time" />
+            <input type="date" placeholder="Select Date" data-ng-model="advanced.datetime" class="date-time" />
         </div>
     </div>
     <button class="search-button button" data-ng-if="travel.origin && travel.destination"
@@ -241,6 +241,9 @@
                 <div class="inline right text-right">
                     {{leg._destination}}
                     <div class="value">({{leg._destTimeMin}})</div>
+                </div>
+                <div data-ng-if="leg._transfercode">
+                    Transfer Code: {{leg._transfercode}}
                 </div>
                 <div class="center" data-ng-if="!$last">
                     Connect Via
