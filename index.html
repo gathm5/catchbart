@@ -200,20 +200,31 @@
     {{fare}}
 </div></script><script type="text/ng-template" id="/views/find-bart-station.html"><div class="find-bart-station">
     <div class="stations" data-ng-if="!loading">
-        <ul>
+        <ul data-ng-if="bart.stations">
+            <li class="center">
+                List of station based on your distance
+            </li>
             <li data-ng-repeat="station in bart.stations">
-                {{station.name}} ~ {{station.distance | distance}}
-                <a ng-href="geo:{{station.gtfs_latitude}},{{station.gtfs_longitude}}">open in maps</a>
+                <div class="station-info">
+                    <span class="station-name">{{station.name}}</span>
+                    <a class="map-link" href="https://www.google.com/maps/place/{{station.address}}, {{station.city}}, {{station.zipcode}}" target="_system">
+                        <i class="fa fa-map-marker"></i>
+                    </a>
+                </div>
+                <span class="distance">
+                    <span class="distance-value">~ {{station.distance | distance}}</span>
+                </span>
             </li>
         </ul>
-        <div>
+        <div data-ng-if="reason">
             {{reason}}
         </div>
     </div>
     <div data-ng-if="loading" class="center location-intermittent">
         <span>
-            Locating bart stations...
+            Loading bart stations...
         </span>
+
         <div class="spinner"></div>
     </div>
 </div></script><script type="text/ng-template" id="/views/menu-panel.html"><div class="menu-panel">
