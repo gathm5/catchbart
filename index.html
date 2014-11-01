@@ -207,7 +207,7 @@
             <li data-ng-repeat="station in bart.stations">
                 <div class="station-info">
                     <span class="station-name">{{station.name}}</span>
-                    <a class="map-link" href="https://www.google.com/maps/place/{{station.address}}, {{station.city}}, {{station.zipcode}}" target="_system">
+                    <a class="map-link" onclick="window.open('https://www.google.com/maps/place/{{station.address}}, {{station.city}}, {{station.zipcode}}', '_system')">
                         <i class="fa fa-map-marker"></i>
                     </a>
                 </div>
