@@ -190,7 +190,11 @@
     <div class="lapse message" data-ng-if="passed">
         {{passed}}
     </div>
-</div></script><script type="text/ng-template" id="/views/directives/web-intent.html"><div class="web-intent">
+</div></script><script type="text/ng-template" id="/views/directives/travel-time-display.html"><span class="value travel-time">
+    <span data-ng-if="hours > 1" class="hours small">{{hours}} hrs, </span>
+    <span data-ng-if="hours === 1" class="hours small">{{hours}} hr, </span>
+    <span class="small"> {{mins}} mins</span>
+</span></script><script type="text/ng-template" id="/views/directives/web-intent.html"><div class="web-intent">
     <div class="intent animate-fade-up" data-ng-if="message">
         <span class="message">{{message}}</span>
     </div>
@@ -272,9 +276,7 @@
                         <span class="time-title label">
                         Total Travel Time:
                         </span>
-                        <span class="value travel-time">
-                            {{trip | travelTimeFilter}} <span class="small">mins</span>
-                        </span>
+                        <travel-time-display data-trip="trip"></travel-time-display>
                     </div>
                     <div data-ng-if="leg._bikeflag === '1'">
                         <i class="fa fa-bicycle"></i> Allowed <span class="type-success"><i class="fa fa-thumbs-up"></i></span>
@@ -320,9 +322,7 @@
                     <span class="time-title label">
                     Total Travel Time:
                     </span>
-                    <span class="value travel-time">
-                        {{trip | travelTimeFilter}} <span class="small">mins</span>
-                    </span>
+                    <travel-time-display data-trip="trip"></travel-time-display>
                 </div>
                 <div data-ng-if="trip.leg._bikeflag === '1'">
                     <i class="fa fa-bicycle"></i> Allowed <span class="type-success"><i class="fa fa-thumbs-up"></i></span>
