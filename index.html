@@ -209,7 +209,7 @@
             <li data-ng-repeat="station in bart.stations">
                 <div class="station-info">
                     <span class="station-name">{{station.name}}</span>
-                    <a class="map-link" data-ng-click="openInMaps(station)">
+                    <a class="map-link" ng-href="geo:{{station.gtfs_latitude}},{{station.gtfs_longitude}}?q={{station.name}}+bart+station">
                         <i class="fa fa-map-marker"></i>
                     </a>
                 </div>
