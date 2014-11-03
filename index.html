@@ -1,7 +1,7 @@
 <!doctype html><!--[if lt IE 7]>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>
 <html class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>
-<html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]--><head><meta charset="utf-8"><title></title><meta name="description" content=""><meta name="viewport" content="width=device-width, height=device-height, maximum-scale=1"><link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css"><link href="http://fonts.googleapis.com/css?family=Courgette" rel="stylesheet" type="text/css"><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel="stylesheet" href="styles/vendor.css"><link rel="stylesheet" href="styles/main.css"><body ng-app="nextBartApp"><!--[if lt IE 7]>
+<html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]--><head><meta charset="utf-8"><title></title><meta name="description" content=""><meta id="viewport" name="viewport" content="width=device-width, height=device-height, maximum-scale=1"><link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css"><link href="http://fonts.googleapis.com/css?family=Courgette" rel="stylesheet" type="text/css"><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel="stylesheet" href="styles/vendor.css"><link rel="stylesheet" href="styles/main.css"><body ng-app="nextBartApp"><!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]--><!-- Add your site or application content here --><div class="container" data-ui-view="HomeView"></div><web-intent></web-intent><!-- Google Analytics: change UA-XXXXX-X to be your site's ID --><script>(function (i, s, o, g, r, a, m) {
@@ -207,7 +207,7 @@
             <li data-ng-repeat="station in bart.stations">
                 <div class="station-info">
                     <span class="station-name">{{station.name}}</span>
-                    <a class="map-link" onclick="window.open('https://www.google.com/maps/place/{{station.address}}, {{station.city}}, {{station.zipcode}}', '_system')">
+                    <a class="map-link" data-ng-click="openInMaps(station)">
                         <i class="fa fa-map-marker"></i>
                     </a>
                 </div>
@@ -338,9 +338,10 @@
 </div></script><script type="text/ng-template" id="/views/route-favorite.html"><p>This is the route-favorite view.</p></script><script type="text/ng-template" id="/views/route-map.html"><back-button data-go="$state.go('menu')"></back-button>
 <div class="route-map">
     <div class="bart-map">
-        <img src="images/bart-map.png" class="map" />
+        <img src="images/bart-map.png" class="map"/>
     </div>
-</div></script><script type="text/ng-template" id="/views/route-schedule.html"><p>This is the route-schedule view.</p></script><script type="text/ng-template" id="/views/schedules.html"><div class="schedules">
+</div>
+<view-port-control></view-port-control></script><script type="text/ng-template" id="/views/route-schedule.html"><p>This is the route-schedule view.</p></script><script type="text/ng-template" id="/views/schedules.html"><div class="schedules">
     <p>This is the schedules view.</p>
 </div></script><script type="text/ng-template" id="/views/station-list.html"><div class="station-list">
     <label for="searchStation">
