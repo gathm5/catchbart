@@ -53,8 +53,8 @@
         Search for schedules
     </button>
     <div>
-        <div class="time-lapse-container animate-rotate" data-ng-if="travel.timer">
-            <data-time-lapse data-timer="{{travel.timer}}"></data-time-lapse>
+        <div class="time-lapse-container animate-rotate" data-ng-if="travel.timer.success">
+            <data-time-lapse data-timer="travel.timer"></data-time-lapse>
         </div>
         <ul class="travel-results" data-ng-if="travel.results">
             <li data-ng-repeat="trip in travel.results.schedule.request.trip"
@@ -182,12 +182,12 @@
     <span>{{time.minutes}}</span>
     <span>{{time.mode}}</span>
 </div></script><script type="text/ng-template" id="/views/directives/time-lapse.html"><div class="time-lapse animate-rotate">
-    <div class="lapse" data-ng-if="!passed">
-        {{show.min}}
+    <div class="lapse" data-ng-if="!message">
+        {{time.minutes}}
         <span class="colon animation-blink">:</span>
-        {{show.sec}}
+        {{time.seconds}}
     </div>
-    <div class="lapse message" data-ng-if="passed">
+    <div class="lapse message" data-ng-if="message">
         {{passed}}
     </div>
 </div></script><script type="text/ng-template" id="/views/directives/travel-time-display.html"><span class="value travel-time">
