@@ -183,9 +183,12 @@
     <span>{{time.mode}}</span>
 </div></script><script type="text/ng-template" id="/views/directives/time-lapse.html"><div class="time-lapse animate-rotate">
     <div class="lapse" data-ng-if="!message">
-        {{time.minutes}}
-        <span class="colon animation-blink">:</span>
-        {{time.seconds}}
+        <span data-ng-if="time.hours">
+            {{time.hours}}h<span class="colon animation-blink">:</span>{{time.minutes}}
+        </span>
+        <span data-ng-if="!time.hours">
+            {{time.minutes}}m<span class="colon animation-blink">:</span>{{time.seconds}}s
+        </span>
     </div>
     <div class="lapse message" data-ng-if="message">
         {{passed}}
