@@ -61,86 +61,6 @@
                 data-ng-click="$state.go('details',{id: $index})"
                 data-ng-class="{'animate-bounce-left': $even, 'animate-bounce-right': $odd}">
                 <ba-depart-info data-trip="trip"></ba-depart-info>
-                <!--<div class="trip-divider" data-ng-if="trip.leg.length">
-                    <div class="ba-depart-info">
-                        <div class="connection-information center">
-                            This travel has a <i class="fa fa-arrows-h"></i> connection
-                        </div>
-                        <div class="leg" data-ng-repeat="leg in trip.leg">
-                            <div class="inline left text-left">
-                                {{leg._origin}}
-                                <div class="value">({{leg._origTimeMin}})</div>
-                            </div>
-                            <div class="inline center arrow">
-                                <i class="fa fa-long-arrow-right"></i>
-                                <i class="fa fa-square" data-ng-style="getColor(leg)"></i>
-                            </div>
-                            <div class="inline right text-right">
-                                {{leg._destination}}
-                                <div class="value">({{leg._destTimeMin}})</div>
-                            </div>
-                            <div class="center" data-ng-if="!$last">
-                                Connect Via
-                            </div>
-                            <div class="center" data-ng-if="$last">
-                                <div>
-                                    <span class="cost-title label">
-                                        Travel Cost:
-                                    </span>
-                                    <span class="value cost">
-                                        {{trip._fare | currency}}
-                                    </span>
-                                </div>
-                                <div>
-                                    <span class="time-title label">
-                                    Total Travel Time:
-                                    </span>
-                                    <travel-time-display data-trip="trip"></travel-time-display>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="trip-divider" data-ng-if="!trip.leg.length">
-                    <div class="ba-depart-info">
-                        <div class="inline left text-left">
-                        <span class="depart-title label">
-                            Starts:
-                        </span>
-                        <span class="value">
-                            {{trip.leg._origTimeMin}}
-                        </span>
-                        </div>
-                        <div class="inline center arrow">
-                            <i class="fa fa-long-arrow-right"></i>
-                            <i class="fa fa-square" data-ng-style="getColor(trip.leg)"></i>
-                        </div>
-                        <div class="inline right text-right">
-                        <span class="reach-title label">
-                            Reaches:
-                        </span>
-                        <span class="value">
-                            {{trip.leg._destTimeMin}}
-                        </span>
-                        </div>
-                        <div class="center">
-                            <div>
-                                <span class="cost-title label">
-                                    Travel Cost:
-                                </span>
-                                <span class="value cost">
-                                    {{trip._fare | currency}}
-                                </span>
-                            </div>
-                            <div>
-                                <span class="time-title label">
-                                Total Travel Time:
-                                </span>
-                                <travel-time-display data-trip="trip"></travel-time-display>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
             </li>
         </ul>
     </div>
@@ -345,10 +265,10 @@
                         <travel-time-display data-trip="trip"></travel-time-display>
                     </div>
                     <div data-ng-if="leg._bikeflag === '1'">
-                        <i class="fa fa-bicycle"></i> Allowed <span class="type-success"><i class="fa fa-thumbs-up"></i></span>
+                        <i class="fa fa-bicycle type-warning"></i> Allowed <i class="fa fa-thumbs-up type-success"></i>
                     </div>
                     <div data-ng-if="leg._bikeflag !== '1'">
-                        <i class="fa fa-bicycle"></i> NOT Allowed <span class="type-failure"><i class="fa fa-thumbs-down"></i></span>
+                        <i class="fa fa-bicycle type-warning"></i> NOT Allowed <i class="fa fa-thumbs-down type-failure"></i>
                     </div>
                 </div>
             </div>
@@ -357,9 +277,7 @@
     <div class="trip-divider" data-ng-if="!trip.leg.length">
         <div class="ba-depart-info">
             <div class="inline left text-left">
-                <span class="depart-title label">
-                    Starts:
-                </span>
+                <div>{{trip.leg._origin}}</div>
                 <span class="value">
                     {{trip.leg._origTimeMin}}
                 </span>
@@ -369,9 +287,7 @@
                 <i class="fa fa-square" data-ng-style="getColor(trip.leg)"></i>
             </div>
             <div class="inline right text-right">
-                <span class="reach-title label">
-                    Reaches:
-                </span>
+                <div>{{trip.leg._destination}}</div>
                 <span class="value">
                     {{trip.leg._destTimeMin}}
                 </span>
@@ -392,10 +308,10 @@
                     <travel-time-display data-trip="trip"></travel-time-display>
                 </div>
                 <div data-ng-if="trip.leg._bikeflag === '1'">
-                    <i class="fa fa-bicycle"></i> Allowed <span class="type-success"><i class="fa fa-thumbs-up"></i></span>
+                    <i class="fa fa-bicycle type-warning"></i> Allowed <i class="fa fa-thumbs-up type-success"></i>
                 </div>
                 <div data-ng-if="trip.leg._bikeflag !== '1'">
-                    <i class="fa fa-bicycle"></i> NOT Allowed <span class="type-failure"><i class="fa fa-thumbs-down"></i></span>
+                    <i class="fa fa-bicycle type-warning"></i> NOT Allowed <i class="fa fa-thumbs-down type-failure"></i>
                 </div>
             </div>
         </div>
