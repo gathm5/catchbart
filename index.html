@@ -217,7 +217,7 @@
     </div>
 </div></script><script type="text/ng-template" id="/views/menu-panel.html"><div class="menu-panel">
     <ul>
-        <li data-ng-repeat="menu in menus" data-ng-click="$state.go(menu.state)">
+        <li data-ng-repeat="menu in menus" data-ng-click="menu.state()">
             <span class="icon">
                 <i class="fa {{menu.icon}}"></i>
             </span>
