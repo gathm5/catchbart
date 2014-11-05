@@ -157,12 +157,12 @@
     <span>{{time.mode}}</span>
 </div></script><script type="text/ng-template" id="/views/directives/color-routes.html"><div class="color-routes">
     <table>
-        <tr data-ng-repeat="code in codes">
+        <tr data-ng-repeat="code in allRoutes">
             <td>
                 <i class="fa fa-square" data-ng-style="{color: code.color}"></i>
             </td>
             <td>
-                {{code.trip}}
+                {{code.name}}
             </td>
         </tr>
     </table>
@@ -218,7 +218,7 @@
 </div></script><script type="text/ng-template" id="/views/menu-panel.html"><div class="menu-panel">
     <ul>
         <li data-ng-repeat="menu in menus" data-ng-click="menu.state()">
-            <span class="icon">
+            <span class="icon animate-wobble" data-ng-if="menu.icon">
                 <i class="fa {{menu.icon}}"></i>
             </span>
 
