@@ -199,14 +199,11 @@
                         <i class="fa fa-map-marker"></i>
                     </a>
                 </div>
-                <span class="distance">
+                <span class="distance" data-ng-if="!noPos">
                     <span class="distance-value">~ {{station.distance | distance}}</span>
                 </span>
             </li>
         </ul>
-        <div data-ng-if="reason" class="error-message">
-            {{reason}}
-        </div>
     </div>
     <div data-ng-if="loading" class="center location-intermittent">
         <span>
