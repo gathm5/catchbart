@@ -198,9 +198,9 @@
             <li data-ng-repeat="station in bart.stations">
                 <div class="station-info">
                     <span class="station-name">{{station.name}}</span>
-                    <a class="map-link" ng-href="geo:{{station.gtfs_latitude}},{{station.gtfs_longitude}}?q={{station.name}}+bart+station">
+                    <geo-link data-geo="station">
                         <i class="fa fa-map-marker"></i>
-                    </a>
+                    </geo-link>
                 </div>
                 <span class="distance" data-ng-if="!noPos">
                     <span class="distance-value">~ {{station.distance | distance}}</span>
