@@ -24,6 +24,7 @@
     <preference name="disable-cursor" value="false"/>
     <preference name="android-minSdkVersion" value="9"/>
     <preference name="android-installLocation" value="auto"/>
+    <gap:plugin name="org.li8.inappbrowser" version="0.1" />
     <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
     </feature>
